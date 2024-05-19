@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vietnam War</title>
+</head>
+<body>
+    <!-- Container -->
+    <div class="container"> 
+        
+        <!-- Title of the event -->
+        <h1 id="title">Indochina</h1> 
+
+        <!-- Image -->
+        <img id="image" src="indochina.png" alt="Indochina"> 
+
+        <!-- Caption -->
+        <div id="caption" class="caption">Indochina is a term to mention countries between Indian and China. Those countries blend the unique cultures of the two giants into countries we know today as Vietnam, Laos, Cambodia, Thailand, Myanmar, and parts of Malaysia. These countries have a long history with many kingdoms rose and fell. The French popularize the terms after they established colonies in Vietnam, Laos and Cambodia. During WW2, the Japanese took advantage of the French when they were defeated by the NAZI German and occupied the region. However, after WW2, Japan surrendered to the Allied because of nuclear weapons, leading to a power vacuum the SEA (Southeast Asia). Seizing this opportunity, the French tried to regain control of the region, and this led to the First Indochina War. Source: https://kids.britannica.com/students/article/Indochina/275049</div>
+
+        <!-- Navigation buttons -->
+        <div class="nav-buttons">
+            <button onclick="navigate(-1)">Previous</button>
+            <button onclick="navigate(1)">Next</button>
+        </div>
+    </div>
+
+    <!-- CSS -->
+    <style>
+        .container {
+            width: 60%;
+            margin: auto;
+            text-align: center;
+        }
+        img {
+            width: 500px;
+            height: 500px;
+        }
+        .caption {
+            font-size: 20px;
+            text-align: left;
+            margin: 18px 0;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+
+    <!-- JS -->
+    <script>
+        var images = ['indochina.png', 'ho chi minh.png', 'first indochina war.png', '17 parallel.png', 'viet cong.png', 'vietnam war.png', 'sai gon fall.png', 'agent orange.png', 'sino vietnam war.png']; // Array that stores images
+        var titles = ['Indochina', 'Ho Chi Minh', 'First Indochina War', 'The Geneva Accords', 'Viet Cong', 'Second Indochina War', 'Withdrawal of US troops and the war ends', 'Agent Orange', 'Sino-Vietnamese War']; // Array that stores titles
+        var captions = ['Indochina is a term to mention countries between Indian and China. Those countries blend the unique cultures of the two giants into countries we know today as Vietnam, Laos, Cambodia, Thailand, Myanmar, and parts of Malaysia. These countries have a long history with many kingdoms rose and fell. The French popularize the terms after they established colonies in Vietnam, Laos and Cambodia. During WW2, the Japanese took advantage of the French when they were defeated by the NAZI German and occupied the region. However, after WW2, Japan surrendered to the Allied because of nuclear weapons, leading to a power vacuum the SEA (Southeast Asia). Seizing this opportunity, the French tried to regain control of the region, and this led to the First Indochina War. Source: https://kids.britannica.com/students/article/Indochina/275049', 'The leader of Democratic Republic of Vietnam (North Vietnam) from 1945 to 1969. He was one of the most influential communist leaders in the 20th century. He founded Viet Minh, an Vietnamese organization that fought the French rule and later the Americans. Source: https://www.britannica.com/biography/Ho-Chi-Minh', 'In 1946, Ho Chi Minh and the French had some peace negotiations that recognize Vietnam as a free state within the French Union. Despite some initially cooperations, the tensions were still high, and the French intension was still clear that they wanted Vietnam to be a colony. In that same year, the French proclaimed Cochinchina (South Vietnam) as an autonomous republic and launched an attack in Hai Phong, the biggest port city in Northern Vietnam. That resulted in thousands of civilian casualties and sparked the beginning of the First Indochina War. In 1949, France reunited South Vietnam and appointed Bao Dai (former emperor of the Nguyen Dynasty) to the chief of state. However, most nationalists denounced Bao Dai leadership and the political in the South was in a state of struggles. The Americans, who feared for the Communist Domino Effect, supported the French with ammunition and money. But, with the fall of French garrison at Dien Bien Phu, which effectively ended the French Colony in Vietnam and led to the Geneva Conference. Source: https://www.britannica.com/place/Vietnam/World-War-II-and-independence', 'The Geneva Accords in 1954 were signed by the Viet Minh and French that cease-fire and temporary divide the country into two at latitude 17 or 17th parallel. All military forces must withdraw, and the Vietnamese people were allowed to relocate between 2 countries for a limited time frame. The Final Declaration of the Accords states that an election needs to be held to unify the country but that never happened. During the mass migration from the North to South of around 1 million people, the two Vietnams began to reform their countries. The North, with the supports of China and Soviet Union, began to embark the program of socialist industrialization and collected agriculture. Whereas the South, Ngo Dinh Diem was appointed as a new president with the support of John F. Kennedy (president of America). Diem achieved this by removing Bao Dai in a government-controlled referendum. Diem, who was an anti-communist, showed obvious signs of dictatorship in his presidency. From consolidating power within his family, apply totalitarian methods to anyone who did not meet his eyes, show favoritism to Roman Catholics while alienated Buddhist in a Buddhism country. All of these ultimately led to his demise when the Viet Cong launched an insurgency movement which further destabilize the country, and when Diem’s general overthrew him, leading to his and his brother’s death. Source: https://www.britannica.com/place/Vietnam/World-War-II-and-independence', 'Communist guerrilla force. A force that is separated but an ally of people’s army of Vietnam. Viet cong was the name given by President Ngo Dinh Diem to belittle the rebels. In the initial stage, Viet Cong is a collection of groups, but later in 1960, they merged into one with an official name of the National Liberation Front (NLF). Although the name changes, the main objective of the group was to overthrow the South Vietnamese government and reunify Vietnam. Source: https://www.britannica.com/topic/Viet-Cong', 'After the death of Ngo Dinh Diem, South Vietnam politics was in chaos, until in 1955, Nguyen Cao Ky who led the military to seized power. Although Ky faced opposition from Buddhists who overthrown Diem, he suppressed them. This oppressive regime did not change after the election of a new president Nguyen Van Thieu. The regime continues to suppress political freedoms and operate in a repressive framework. On the other hand, the North and the Viet Cong soldiers insurged South Vietnam from 1963 (Diem’s death) with 30,000 fighters to 150,000 in 1965. This caused the American to fear for the fall of Sai Gon. Fearing the thread of North Vietnam, the American supported the South regime with the addition of many advisers, and ammunitions, but it could not halt the advance of Northern Vietnam. After the Congress approve the for war in Vietnam after the Gulf of Tonkin incident, President Lyndon B. Johnson appointed 500,000 troops in Vietnam to fight along slide 600,000 South Vietnamese soldiers and the allied from South Korean, Thailand, Australia, and New Zealand. From 1965 to 1968 began the intensive bombing of the Americans to the North Vietnam. Despise that, it only strengthens the resilient of the PVA (People’s Army of Vietnam) and the Viet Cong to unify the country. Infiltration of personnel and supplies down the Ho Chi Minh Trail continued to increase with an estimation of more than 100,000 regular troops from the north. The evident of continuing strength became clear during the Tet Offensive where the North Vietnam attacked more than 100 cities and military bases. The offensive shocked the US public and a growing conviction to continue the war at the current level was unacceptable. This led to the negotiations in Paris in 1968 where the bombing halted but the war still continued. Source: https://www.britannica.com/place/Vietnam/The-two-Vietnams-1954-65', 'The war still continued under the new US president Richard M. Nixon, but a peace treaty was signed in Paris. As mentioned on the maps, President Nixon had a policy of Vietnamization where he wanted to end the US involvement in the Vietnam War. In the peace treaty signed by the US and three parties in Vietnam (North Vietnam, South Vietnam, and Viet Cong), the US needed to leave Vietnam within 60 days and create a political process to resolute the conflict in the south. However, the peace talks did not mention anything about the 100,000 North Vietnamese soldiers stationed in the South, and so the civil war continued. In late 1974, North Vietnam launched a major offensive to the South, which caused the Sai Gon’s troops to be in disarray. President Thieu ordered to retreat the troops back the Sai Gon, but it was too late. On April 30, 1975, the South Vietnam emerged victorious and thus united the country. Source: https://www.britannica.com/place/Vietnam/The-two-Vietnams-1954-65', 'Agent orange was an herbicide used by US during the Vietnam War. This herbicide contains a dangerous chemical called dioxin. The substance dioxin is highly contaminated and exposure to it can cause health issues such as cancers, diabetes, and birth defects. The Red Cross estimated that around 3 million Vietnamese have been affected by this dioxin and at least 150,000 children were born with severe birth defects. Until this day, there are still millions of Vietnamese and Americans are affected by Agent Orange. Additionally, in southern and central Vietnam, millions of acres of forest and farmland are defoliated by Agent Orange. Although Agent Orange was terminated by the US and there is no more Agent Orange chemical today, its impact is still there. Source: https://www.aspeninstitute.org/programs/agent-orange-in-vietnam-program/what-is-agent-orange/#:~:text=Agent%20Orange%20was%20a%20herbicide,to%20have%20harmful%20impact%20today.', 'This text is a copy from the map. Khmer Rouge, a terror regime led by Pol Pot which killed millions of Cambodians which sought Vietnam was their next target. After their defeats in 1977 where the Khmer Rouge killed 1000 Vietnamese, and Vietnam retaliated by launching several successful campaigns, the Khmer Rouge came back in 1978. In April of that year, they crossed the border and attacked Ba Chuc village. Only 12 days, they mass murdered 3000 Vietnamese and there were only 2 known survivors. These caused Vietnam to attack full force and capture Phnom Penh (the capital of Cambodia) in January of 1979, ending the Pol Pot regime. China, who supported the Khmer Rouge financial, feared the expansion of Vietnam, started a Sino-Vietnamese War which lasted for 27 days. Source: https://solotravellerontour.com/mekong-delta-border-loop-ba-chuc-tomb/']; // Array that stores captions
+        var currentIndex = 0; // Initial index
+
+        <!-- Function that updates slide shows based on direction. -1 means previous, +1 means next -->
+        function navigate(direction) {
+            <!-- circular naviation based on current index -->
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+
+            <!-- Update the image -->
+            document.getElementById("image").src = images[currentIndex];
+
+            <!-- Update the title -->
+            document.getElementById("title").innerText = titles[currentIndex];
+
+            <!-- Update the caption -->
+            document.getElementById("caption").innerText = captions[currentIndex];
+        }
+    </script>
+</body>
+</html>
