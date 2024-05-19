@@ -579,7 +579,7 @@ embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 # Based on the information above, extract a short but highly descriptive topic label of at most 5 words. Make sure it is in the following format:
 # topic: <topic label>
 # """
-# client = openai.OpenAI(api_key="sk-proj-QFpbTwzLPdgj5h9SbTsLT3BlbkFJrvE2Kz8SXXOuV8VsmqvU")
+# client = openai.OpenAI(api_key="...")
 # openai_model = OpenAI(client, model="gpt-3.5-turbo", exponential_backoff=True, chat=True, prompt=prompt)
 
 # # Fine-tune the topic representations
