@@ -1,3 +1,6 @@
+# For normal viewers
+- Just download the repo and open the `final.pdf` for reading
+
 # Install requirements to run the `quarto` file
 - Correctly install pytorch and tensorflow
 - Then install transformer and Bertopic

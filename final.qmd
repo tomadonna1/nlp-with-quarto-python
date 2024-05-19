@@ -28,6 +28,12 @@ jupyter: python3
 
 **Undergraduate:** SIT220   
 
+# Introduction
+In this task, I will be analyzing data from StackExchage History with the main focus on Vietnamese History. I will be going over some data preparing and cleaning process before analyzing. My analyzation are divided into 2 parts. A general and deep analyzation. A general analysis will be looking at the most common words and its trend. A deep analysis will be using some machine learning models and llms to understand the context of each posts and comments. 
+
+
+# Body
+
 ## Data Preparation
 ### Importing the libraries
 ```{python}
@@ -162,7 +168,7 @@ print(df2.head(), df2.shape)
 After grouping the datasets, we can see that the tags column allows us to filter out things related to our topic
 
 ### Filtered out topics via `Tags` column
-I am interested in this column because it allows me to filter out tags related to `vietnam war`.
+I am interested in this column because it allows me to filter out tags related to `vietnam history`.
 ```{python}
 # Fill NaN values in `Tags` column with empty string
 df2['Tags'] = df2['Tags'].fillna('')
@@ -209,13 +215,14 @@ I will convert the rows of these two columns into string to look out for things 
 post_string = '\n'.join(df3.drop_duplicates('Post').Post).lower()
 comment_string = '\n'.join(df3.Comment).lower()
 
-print(post_string[:100], comment_string[:100])
+print(post_string[:20])
+print(comment_string[:20])
 ```
 
 
 ### Remove `HTML` tags from `Post` and `Comment` column
 ```{python}
-print(re.findall('<.*?>', df3.Post[109]))
+print(re.search('<.*?>', post_string))
 def remove_html(text):
     return re.sub('\<.*?>', '', text) # replace matching substrings with a new string for all occurrences
 df3['Post'] = df3['Post'].apply(remove_html) 
@@ -236,8 +243,8 @@ bracket_pattern = '\[(?:[^\[\]]+)\]'
 link_pattern = '(?:http\S+)'
 
 # Example display
-print(re.findall(link_pattern, df3['Comment'][298]))
-print(re.findall(bracket_pattern, df3['Comment'][50]))
+print(re.search(link_pattern, comment_string))
+print(re.search(bracket_pattern, comment_string))
 
 # Remove those patterns
 df3['Comment'] = df3['Comment'].replace({bracket_pattern: '', link_pattern: ''}, regex=True)
@@ -278,7 +285,7 @@ These columns are useful when plotting the time series graph.
 ### Create new columns to remove `stop words` and `punctuation`. Use in finding the most common words.
 #### Remove `punctuation`
 ```{python}
-display(re.findall('[^\w\s]|[0-9]|[_]', df4.Post[0]))
+print(re.findall('[^\w\s]|[0-9]|[_]', post_string))
 
 def remove_punctuation(text):
     return re.sub('[^\w\s]|[0-9]|[_]', '', text) # replace matching substrings with a new string for all occurrences
@@ -750,7 +757,7 @@ vietnam_map.save("vietnam_map.html")
 
 To view the interactive map, please [click here](vietnam_map.html).
 
-The map shows different events and locations from the `Post`. There are many interesting topics discussed and I have provide a summary for the majority of them on this Vietnam map. When you click on each of the marker, it will show the location and the event happened their. Also, the red line is the Ho Chi Minh Trail, the trail that sent North Vietnamese soilders and supplies into South Vietnam.
+The map shows different events and locations from the `Post`. There are many interesting topics discussed and I have provided a summary for the majority of them on this Vietnam map. When you click on each of the marker, it will show the location and the event happened their. Also, the red line is the Ho Chi Minh Trail, the trail that sent North Vietnamese soilders and supplies into South Vietnam.
 
 ## Emotion detection for `Post`
 ### Add columns from `df4`
@@ -1127,8 +1134,8 @@ print(df10.head())
 This dataframe shows our deep analysis on the `Post` and `Comments`. It shows the `Post Topic` which is the Bertopic model categorizing the posts. `OpenAI Post Summary` is the summary generated to OpenAI. That couple with the `Original Post` column helped me to understand the overall theme of the posts. `OpenAI Post Label` and `KeyBERT Post Label` are the labelling of each topic from openai and keybert. The `Post Emotion` and `Comment Emotion` show the emotions for each post and comment. `Comment Keywords` is the column show casing the keywords of each comments, which help me to build an visualization on the chronological order of events happen prior, at and after the Vietnam War. 
 
 
-## Conclusion
+# Conclusion
 Here are the conclusion for the overall analysis and potential data privacy and ethics issues that arise during the my data analyzing process. First is the data preparation process where I convert the `xml` files from Stack Exchange to `csv` files. Then comes the data cleaning part. In the section, I will merge the different `csv` files together and use regexes along with other libraries to filter and clean my text columns. Next is the general analysis part where I look for the most common words in `Post` and `Comment` column. I also plot a time series graph on those most common words through out the years. After that, I need to perform a deeper analysis on the post and its corresponding comments. I first analyze the posts by using `OpenAI` and `Bertopic` to understand the overall theme and look out for different events and locations. These is crucial for plotting a Vietnam Map on different events happen during the Vietnamese History, more specifically the modern Vietnamese History and the location of the said event. I also apply `Emotion Detection` to identify the main emotions surrounding the posts. Second, I look at the comments. Since there are quite a lot of comments, I have gone for a different approach. I use `OpenAI` to return specific keywords and from those keywords, I have organized a chronological visualization on events surrouding those keywords. I also look for emotions surrounding each comments. 
 
-For the data privacy and ethics issues, I have some assumptions. Firstly, I was planning to use the `Users` dataset to plot a map of different users and their names to see who are interested in the Vietnam History and at what time. But, I feel like that is invading that person privacy and interest because I do not have their consent to use their information. I will just keep it as an anonymous QnA data. Also, I am a Vietnamese and analyzing different topics surrounding my country history. For that, I might be biased on my view towards certain topics. And Since this analysis is analyzing about war, meaning the context of its are sensitive, so different people of different origins may react differently while reading my analysis.
+For the data privacy and ethics issues, I have some assumptions. Firstly, I was planning to use the `Users` dataset to plot a map of different users and their names to see who are interested in the Vietnam History and at what time. But, I feel like that is invading that person privacy and interest because I do not have their consent to use their information. I will just keep it as an anonymous QnA data. Also, I am a Vietnamese and analyzing different topics surrounding my country history. For that, I might be biased on my view towards certain topics. And since this analysis is analyzing about war, meaning the context of its are sensitive, so different people of different origins may react differently while reading my analysis.
 
